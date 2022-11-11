@@ -15,7 +15,7 @@ import android.widget.Toast;
 public class CreditoActivity extends AppCompatActivity {
     EditText jetcodigo_credito, jetidentificacion;
     TextView jtvnombre, jtvprofesion, jtvsalario, jtvingresos_extras, jtvgastos, jtvvalor_prestamo;
-    String identificacion,salario,gastos,valor_prestamo,ingresos;
+    String identificacion,salario,gastos,valor_prestamo,ingresos,codigo_credito;
 
     ClsOpenHelper admin = new ClsOpenHelper(this, "Banco.bd", null, 1);
 
@@ -78,11 +78,25 @@ public class CreditoActivity extends AppCompatActivity {
             oingresos=Integer.parseInt(ingresos);
             operacion=((osalario+oingresos-ogastos)*10);
             jtvvalor_prestamo.setText(String.valueOf(operacion));
-            
+
         }
 
     }
     public void Guardar(View view){
+        identificacion = jetidentificacion.getText().toString();
+        salario=jtvsalario.getText().toString();
+        ingresos=jtvingresos_extras.getText().toString();
+        gastos=jtvgastos.getText().toString();
+        valor_prestamo=jtvvalor_prestamo.getText().toString();
+        codigo_credito=jetcodigo_credito.getText().toString();
+
+        if (identificacion.isEmpty() ||codigo_credito.isEmpty() || valor_prestamo.isEmpty()){
+            Toast.makeText(this, "Los datos son requeridos", Toast.LENGTH_SHORT).show();
+            jetidentificacion.requestFocus();
+        }
+        else{
+            SQLiteDatabase fil=admin.getWritableDatabase()
+        }
 
     }
     public void Regresar(View view){
