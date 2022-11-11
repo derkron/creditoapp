@@ -72,12 +72,17 @@ public class CreditoActivity extends AppCompatActivity {
         }
         else{
             int  ogastos, osalario,oingresos;
-            float ngastos,nsalario,ningresos;
+            float operacion;
             ogastos=Integer.parseInt(gastos);
             osalario=Integer.parseInt(salario);
             oingresos=Integer.parseInt(ingresos);
-
+            operacion=((osalario+oingresos-ogastos)*10);
+            jtvvalor_prestamo.setText(String.valueOf(operacion));
+            
         }
+
+    }
+    public void Guardar(View view){
 
     }
     public void Regresar(View view){
